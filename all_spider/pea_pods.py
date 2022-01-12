@@ -2,12 +2,13 @@
 #encoding:utf-8
 
 import requests
-from lxml import etree
+from lxml import etree  
 import sys,os
 sys.path.append(".")
 from dl import download
 
-def check(path="apks/dldl_9you/",serial="8130690"):
+def check(path="dldl_9you/",serial="8130690"):
+    path = "apks/"+path
     resp = requests.get("https://www.wandoujia.com/apps/"+serial)
     _element = etree.HTML(resp.text)
     try:

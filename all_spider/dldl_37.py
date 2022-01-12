@@ -9,7 +9,8 @@ import re
 from dl import download
 
 
-def check(path="apks/dldl_37/"):
+def check(path="dldl_37/"):
+    path = "apks/"+path
     resp = requests.get("https://mg-api.37.com.cn/website/articlelist/51/46?webId=51&categoryId=46&pageSize=999").json()
     url = resp['data']['array'][0]['ext6']
     file_name = re.search(r".*/(?P<v>.*)",url).group("v")

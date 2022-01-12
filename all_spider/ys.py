@@ -8,7 +8,8 @@ import sys
 sys.path.append(".")
 from dl import download
 
-def check(path="apks/ys/"):
+def check(path="ys/"):
+    path = "apks/"+path
     url = "https://ys.mihoyo.com/main/m"
     resp = requests.get(url)
     resp.encoding="utf8"

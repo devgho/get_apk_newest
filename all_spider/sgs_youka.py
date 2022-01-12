@@ -8,7 +8,8 @@ sys.path.append(".")
 from dl import download
 
 
-def check(path="apks/sgs_youka/"):
+def check(path="sgs_youka/"):
+    path = "apks/"+path
     url = "https://www.sanguosha.cn/"
     resp = requests.get(url,timeout=500)
     url = re.search(r"http.*?apk",resp.text).group()
