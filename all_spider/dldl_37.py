@@ -1,3 +1,6 @@
+#!bin/python
+#encoding:utf-8
+
 import sys
 import os
 sys.path.append(".")    #可以用os.get_cwd()看一下工作路劲再append

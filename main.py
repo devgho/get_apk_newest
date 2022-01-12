@@ -1,3 +1,6 @@
+#!bin/python
+#encoding:utf-8
+
 import os
 from all_spider.pea_pods import check as peapods
 from all_spider.dldl_37 import check as dldl_37

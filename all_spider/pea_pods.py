@@ -1,3 +1,6 @@
+#!bin/python
+#encoding:utf-8
+
 import requests
 from lxml import etree
 import sys,os
