@@ -21,7 +21,7 @@ def check(path="dldl_9you/",serial="8130690"):
     
 
 def main():
-    check("apks/sgs_9you/",serial="6561883")
+    check("sgs_9you/",serial="6561883")
 
 if __name__ == "__main__":
     main()
