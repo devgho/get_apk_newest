@@ -3,17 +3,18 @@
 
 import requests
 from lxml import etree
-import os
-import re
-import json
+import os,sys,re,json
 from platform import system
+
+from requests.api import request
 
 
 def download(url,filename,path):
     if not os.path.exists(path):
-        os.mkdir(path)
-    with open(path+filename, "wb") as f:
-        f.write(requests.get(url).content)
+        os.mkdir(path)  
+    filepath = path+filename
+    D = Downloader(url,filepath)
+    D.start()
     package = os.popen("aapt dump badging "+path+filename+("|findstr " if system()=="Windows" else "|grep ")+"package").read()
     name = re.search(r"name='(?P<v>.*?)'",package,re.I).group("v")
     version_code = re.search(r"versioncode='(?P<v>.*?)'",package,re.I).group("v")
@@ -28,6 +29,39 @@ def download(url,filename,path):
     with open(path+"/"+name+".json","w",encoding="utf8") as f:
         f.write(info_json)
     
+
+class Downloader(object):
+    def __init__(self, url, file_path):
+        self.url = url
+        self.file_path = file_path
+ 
+    def start(self):
+        res_length = requests.get(self.url, stream=True)
+        total_size = int(res_length.headers['Content-Length'])
+        print(res_length.headers)
+        print(res_length)
+        if os.path.exists(self.file_path):
+            temp_size = os.path.getsize(self.file_path)
+            print("当前：%d 字节， 总：%d 字节， 已下载：%2.2f%% " % (temp_size, total_size, 100 * temp_size / total_size))
+        else:
+            temp_size = 0
+            print("总：%d 字节，开始下载..." % (total_size,))
+ 
+        headers = {'Range': 'bytes=%d-' % temp_size,
+                   "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:81.0) Gecko/20100101 Firefox/81.0"}
+        res_left = requests.get(self.url, stream=True, headers=headers)
+ 
+        with open(self.file_path, "ab") as f:
+            for chunk in res_left.iter_content(chunk_size=1024):
+                temp_size += len(chunk)
+                f.write(chunk)
+                f.flush()
+
+                # done = int(50 * temp_size / total_size)
+                # sys.stdout.write("\r[%s%s] %d%%" % ('█' * done, ' ' * (50 - done), 100 * temp_size / total_size))       #百分比显示下载进度，进度条每2%多一个█
+                # sys.stdout.flush()  
+
+
 
 def main():
     resp = requests.get("https://www.wandoujia.com/apps/8130690")

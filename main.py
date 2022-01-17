@@ -11,7 +11,7 @@ from all_spider.tencent import check as tencent
 from all_spider.sgz import check as sgz
 
 
-def Multithreading(target,args):
+def Multithreading(target,args=""):
     thread = Thread(target=target,args=args)
     thread.start()
 
