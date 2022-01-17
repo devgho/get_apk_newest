@@ -14,8 +14,7 @@ def check(path="dldl_37/"):
     resp = requests.get("https://mg-api.37.com.cn/website/articlelist/51/46?webId=51&categoryId=46&pageSize=999").json()
     url = resp['data']['array'][0]['ext6']
     file_name = re.search(r".*/(?P<v>.*)",url).group("v")
-    if not os.path.exists(path+file_name):
-        download(url,file_name,path)
+    download(url,file_name,path)
 
 def main():
     check()

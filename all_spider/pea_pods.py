@@ -8,14 +8,13 @@ sys.path.append(".")
 from dl import download
 
 def check(path="dldl_9you/",serial="8130690"):
-    path = "apks/"+path
+    fullpath = "apks/"+path
     resp = requests.get("https://www.wandoujia.com/apps/"+serial)
     _element = etree.HTML(resp.text)
     try:
         version =  str(_element.xpath("/html/body/div[2]/div[2]/div[2]/div[2]/div[1]/dl/dd[3]/text()")[0]).replace(u"\xa0",u"")
-        if not os.path.exists(path+version+".apk"):
-            url = _element.xpath("/html/body/div[2]/div[2]/div[1]/div[2]/div[3]/a[1]/@href")[0] #没找到与页面中版本匹配的包的话就爬
-            download(url, version+".apk", path)
+        url = _element.xpath("/html/body/div[2]/div[2]/div[1]/div[2]/div[3]/a[1]/@href")[0]
+        download(url, version+".apk", fullpath)
     except IndexError:
         check(path,serial)
     

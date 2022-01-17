@@ -32,8 +32,7 @@ def check(path="sgz/"):
     # dl_link = re.search("link:\"(?P<link>https://.*?)\"",resp.text).group('link')
 
     file_name = re.search(r"(?P<u>.*/)(?P<filename>.*)", dl_link).group("filename")+".apk"
-    if not os.path.exists(path+file_name):
-        download(dl_link,file_name,path)
+    download(dl_link,file_name,path)
 
 def main():
     check()

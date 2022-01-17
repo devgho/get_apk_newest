@@ -14,8 +14,7 @@ def check(path="sgs_youka/"):
     resp = requests.get(url,timeout=500)
     url = re.search(r"http.*?apk",resp.text).group()
     filename = re.search(r".*/(?P<v>.*)",url).group('v')
-    if not os.path.exists(path+filename):
-        download(url,filename,path)
+    download(url,filename,path)
 
 def main():
     check()

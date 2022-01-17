@@ -16,8 +16,7 @@ def check(path="ys/"):
     result = re.search(r"version:\"(?P<v>.*?)\"", resp.text).group("v")
     version = re.search(r"[\d\.]+",result).group()
     filename = version+".apk"
-    if not os.path.exists(filename):
-        download("https://ys-api.mihoyo.com/event/download_porter/link/ys_cn/official/android_default",filename,path)
+    download("https://ys-api.mihoyo.com/event/download_porter/link/ys_cn/official/android_default",filename,path)
 
 
 def main():

@@ -14,8 +14,7 @@ def check(path="hpjy/",url="https://95f694c353ade32847c5f5e5f3139de2.dlied1.cdnt
     all = res.text
     url = re.search("https://dlied4.myapp.com/myapp/.*?apk",all).group()
     filename = re.search(r"(?P<u>.*/)(?P<filename>.*?apk)",url).group("filename")
-    if not os.path.exists(path+filename):
-        download(url,filename,path)
+    download(url,filename,path)
 
 def main():
     check()
