@@ -1,7 +1,6 @@
 #!bin/python
 #encoding:utf-8
 
-from turtle import down
 import requests
 from lxml import etree
 import os,sys,re,json
