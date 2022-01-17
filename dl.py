@@ -1,6 +1,7 @@
 #!bin/python
 #encoding:utf-8
 
+from turtle import down
 import requests
 from lxml import etree
 import os,sys,re,json
@@ -14,23 +15,29 @@ def download(url,filename,path):
     if not os.path.exists(path):
         os.mkdir(path)  
     filepath = path+filename
+    if os.path.exists(filepath):
+        return
     D = Downloader(url,filepath)
     D.start()
-    package = os.popen("aapt dump badging "+path+filename+("|findstr " if system()=="Windows" else "|grep ")+"package").read()
-    name = re.search(r"name='(?P<v>.*?)'",package,re.I).group("v")
-    version_code = re.search(r"versioncode='(?P<v>.*?)'",package,re.I).group("v")
-    version_name = re.search(r"versionname='(?P<v>.*?)'",package,re.I).group("v")
-    last_filename = f'{name}_{version_code}.apk'
-    info = {
-        "version_code":version_code,
-        "version_name":version_name,
-        "last_filename":last_filename
-    }
-    info_json = json.dumps(info)
-    jym_path = "/home/data/jymdata/apks/"
-    with open(jym_path+name+".json","w",encoding="utf8") as f:
-        f.write(info_json)
-    copyfile(filepath,jym_path+last_filename)
+    try:
+        package = os.popen("aapt dump badging "+path+filename+("|findstr " if system()=="Windows" else "|grep ")+"package").read()
+        name = re.search(r"name='(?P<v>.*?)'",package,re.I).group("v")
+        version_code = re.search(r"versioncode='(?P<v>.*?)'",package,re.I).group("v")
+        version_name = re.search(r"versionname='(?P<v>.*?)'",package,re.I).group("v")
+        last_filename = f'{name}_{version_code}.apk'
+        info = {
+            "version_code":version_code,
+            "version_name":version_name,
+            "last_filename":last_filename
+        }
+        info_json = json.dumps(info)
+        jym_path = "/home/data/jymdata/apks/"
+        with open(jym_path+name+".json","w",encoding="utf8") as f:
+            f.write(info_json)
+        copyfile(filepath,jym_path+last_filename)
+    except:
+        os.remove(filepath)
+        download(url,filename,path)
     
     
     

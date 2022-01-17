@@ -18,7 +18,8 @@ def Multithreading(target,args=""):
 def main():
     peapods_games = [
         ["dldl_9you/","8130690"],
-        ["sgs_9you/","6561883"]
+        ["sgs_9you/","6561883"],
+        ["sgz_9you/","7956134"]
     ]
     tencent_games = [
         ["wangzhe/", "https://696214c97ffe3b0032745108cb06ef60.dlied1.cdntips.net/godlied4.myapp.com/myapp/6337/cos.static-77964/1104466820.js?mkey=61ce95bcdef462cc&f=0ae6&time=1596093184&cip=222.244.68.57&proto=https&access_type="],
