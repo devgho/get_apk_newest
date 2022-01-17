@@ -7,6 +7,7 @@ import os,sys,re,json
 from platform import system
 
 from requests.api import request
+from shutil import copyfile
 
 
 def download(url,filename,path):
@@ -26,8 +27,12 @@ def download(url,filename,path):
         "last_filename":last_filename
     }
     info_json = json.dumps(info)
-    with open(path+"/"+name+".json","w",encoding="utf8") as f:
+    jym_path = "/home/data/jymdata/apks/"
+    with open(jym_path+name+".json","w",encoding="utf8") as f:
         f.write(info_json)
+    copyfile(filepath,jym_path+last_filename)
+    
+    
     
 
 class Downloader(object):
