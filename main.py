@@ -9,6 +9,7 @@ from all_spider.ys import check as ys
 from all_spider.sgs_youka import check as sgs_youka
 from all_spider.tencent import check as tencent
 from all_spider.sgz import check as sgz
+from all_spider.ninegame import check as ninegame
 
 
 def Multithreading(target,args=""):
@@ -34,6 +35,7 @@ def main():
     sgz()
     for i in peapods_games:
         peapods(i[0],i[1])
+    ninegame("sgzzlb")
 
 if __name__ == "__main__":
     main()
