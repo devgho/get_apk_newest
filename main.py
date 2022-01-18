@@ -35,7 +35,7 @@ def main():
     sgz()
     for i in peapods_games:
         peapods(i[0],i[1])
-    ninegame("sgzzlb")
+    ninegame("sgzzlb","sgzzlb.apk")
 
 if __name__ == "__main__":
     main()

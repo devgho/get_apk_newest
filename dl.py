@@ -19,7 +19,7 @@ def download(url,filename,path):
     D = Downloader(url,filepath)
     D.start()
     try:
-        package = os.popen("aapt dump badging "+path+filename+("|findstr " if system()=="Windows" else "|grep ")+"package").read()
+        package = os.popen("aapt dump badging "+filepath+("|findstr " if system()=="Windows" else "|grep ")+"package").read()
         name = re.search(r"name='(?P<v>.*?)'",package,re.I).group("v")
         version_code = re.search(r"versioncode='(?P<v>.*?)'",package,re.I).group("v")
         version_name = re.search(r"versionname='(?P<v>.*?)'",package,re.I).group("v")
