@@ -9,7 +9,7 @@ from dl import download
 
 
 def check(path="sgs_youka/"):
-    path = "apks/"+path
+    path = os.path.join("apks/",path)
     url = "https://www.sanguosha.cn/"
     resp = requests.get(url,timeout=500)
     url = re.search(r"http.*?apk",resp.text).group()

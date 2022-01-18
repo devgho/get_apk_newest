@@ -9,7 +9,7 @@ sys.path.append(".")
 from dl import download
 
 def check(path="ys/"):
-    path = "apks/"+path
+    path = os.path.join("apks/",path)
     url = "https://ys.mihoyo.com/main/m"
     resp = requests.get(url)
     resp.encoding="utf8"

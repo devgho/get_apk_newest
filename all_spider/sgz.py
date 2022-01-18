@@ -17,7 +17,7 @@ from dl import download
 #     p.write(page.prettify())
 
 def check(path="sgz/"):
-    path = "apks/"+path
+    path = os.path.join("apks/",path)
     url = "https://cdn-cn.lingxigames.com/prism-sgzzlb/1.0.0/test/static/js/fabm.620a04ba.js"
     headers = {
         "Referer": "https://sgzzlb.lingxigames.com/",

@@ -13,7 +13,7 @@ from shutil import copyfile
 def download(url,filename,path):
     if not os.path.exists(path):
         os.mkdir(path)  
-    filepath = path+filename
+    filepath = os.path.join(path,filename)
     if os.path.exists(filepath):
         return
     D = Downloader(url,filepath)
@@ -67,10 +67,9 @@ class Downloader(object):
                 temp_size += len(chunk)
                 f.write(chunk)
                 f.flush()
-
-                # done = int(50 * temp_size / total_size)
-                # sys.stdout.write("\r[%s%s] %d%%" % ('█' * done, ' ' * (50 - done), 100 * temp_size / total_size))       #百分比显示下载进度，进度条每2%多一个█
-                # sys.stdout.flush()  
+                done = int(50 * temp_size / total_size)
+                sys.stdout.write("\r[%s%s] %d%%" % ('█' * done, ' ' * (50 - done), 100 * temp_size / total_size))       #百分比显示下载进度，进度条每2%多一个█
+                sys.stdout.flush()  
 
 
 

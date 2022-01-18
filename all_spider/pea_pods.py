@@ -8,7 +8,7 @@ sys.path.append(".")
 from dl import download
 
 def check(path="dldl_9you/",serial="8130690"):
-    fullpath = "apks/"+path
+    fullpath = os.path.join("apks/",path)
     resp = requests.get("https://www.wandoujia.com/apps/"+serial)
     _element = etree.HTML(resp.text)
     try:
