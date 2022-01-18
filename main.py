@@ -26,15 +26,14 @@ def main():
     ]
     if not os.path.exists("apks"):
         os.mkdir("apks")
-    for i in peapods_games:
-        peapods(i[0],i[1])
     for i in tencent_games:
         tencent(i[0],i[1])
     dldl_37()
     ys()
     sgs_youka()
     sgz()
-    
+    for i in peapods_games:
+        peapods(i[0],i[1])
 
 if __name__ == "__main__":
     main()
