@@ -4,6 +4,7 @@ import requests
 import os,sys,re
 sys.path.append(".")
 from dl import download
+from ninegame import check as ninegame
 
 # url = "https://sgzzlb.lingxigames.com/m"
 # resp = requests.get(url)
@@ -33,6 +34,8 @@ def check(path="sgz/"):
 
     file_name = re.search(r"(?P<u>.*/)(?P<filename>.*)", dl_link).group("filename")+".apk"
     download(dl_link,file_name,path)
+    ninegame("sgzzlb",file_name)
+
 
 def main():
     check()
