@@ -23,7 +23,7 @@ def main():
     ]
     tencent_games = [
         ["wangzhe/", "https://696214c97ffe3b0032745108cb06ef60.dlied1.cdntips.net/godlied4.myapp.com/myapp/6337/cos.static-77964/1104466820.js?mkey=61ce95bcdef462cc&f=0ae6&time=1596093184&cip=222.244.68.57&proto=https&access_type="],
-        ["hpjy/", "https://696214c97ffe3b0032745108cb06ef60.dlied1.cdntips.net/godlied4.myapp.com/myapp/6337/cos.static-77964/1104466820.js?mkey=61ce95bcdef462cc&f=0ae6&time=1596093184&cip=222.244.68.57&proto=https&access_type="]
+        ["hpjy/", "https://95f694c353ade32847c5f5e5f3139de2.dlied1.cdntips.net/godlied4.myapp.com/myapp/6337/cos.static-77964/1106467070.js?mkey=61ce8403def462cc&f=0000&time=1592375172&cip=222.244.68.57&proto=https&access_type="]
     ]
     if not os.path.exists("apks"):
         os.mkdir("apks")
