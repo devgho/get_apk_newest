@@ -17,7 +17,6 @@ def Multithreading(target,args=""):
 
 def main():
     peapods_games = [
-        ["dldl_9you/","8130690"],
         ["sgs_9you/","6561883"]
     ]
     tencent_games = [

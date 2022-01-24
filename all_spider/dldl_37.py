@@ -7,6 +7,7 @@ sys.path.append(".")    #可以用os.get_cwd()看一下工作路劲再append
 import requests
 import re
 from dl import download
+from ninegame import check as ninegame
 
 
 def check(path="dldl_37/"):
@@ -15,6 +16,8 @@ def check(path="dldl_37/"):
     url = resp['data']['array'][0]['ext6']
     file_name = re.search(r".*/(?P<v>.*)",url).group("v")
     download(url,file_name,path)
+    ninegame("dldlhsdj", file_name)
+    
 
 def main():
     check()
