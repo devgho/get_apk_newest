@@ -16,7 +16,7 @@ def check(path="sgs_youka/"):
     url = re.search(r"http.*?apk",resp.text).group()
     filename = re.search(r".*/(?P<v>.*)",url).group('v')
     download(url,filename,path)
-    ninegame("sgs","filename")
+    ninegame("sgs",filename)
 
 def main():
     check()
