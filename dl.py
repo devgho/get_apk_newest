@@ -25,18 +25,19 @@ def download(url,filename,path):
         version_name = re.search(r"versionname='(?P<v>.*?)'",package,re.I).group("v")
         last_filename = f'{name}_{version_code}.apk'
         info = {
-            "version_code":version_code,
-            "version_name":version_name,
-            "last_filename":last_filename
+        "version_code":version_code,
+        "version_name":version_name,
+        "last_filename":last_filename
         }
         info_json = json.dumps(info)
-        jym_path = "/home/data/jymdata/apks/"
-        with open(jym_path+name+".json","w",encoding="utf8") as f:
-            f.write(info_json)
-        copyfile(filepath,jym_path+last_filename)
     except:
         os.remove(filepath)
         download(url,filename,path)
+
+    jym_path = "/home/data/jymdata/apks/"
+    with open(jym_path+name+".json","w",encoding="utf8") as f:
+        f.write(info_json)
+    copyfile(filepath,jym_path+last_filename)
     
     
     

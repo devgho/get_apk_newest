@@ -6,6 +6,7 @@ import re
 import os,sys
 sys.path.append(".")
 from dl import download
+from ninegame import check as ninegame
 
 
 def check(path="sgs_youka/"):
@@ -15,6 +16,7 @@ def check(path="sgs_youka/"):
     url = re.search(r"http.*?apk",resp.text).group()
     filename = re.search(r".*/(?P<v>.*)",url).group('v')
     download(url,filename,path)
+    ninegame("sgs","filename")
 
 def main():
     check()
