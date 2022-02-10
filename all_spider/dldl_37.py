@@ -15,8 +15,8 @@ def check(path="dldl_37/"):
     resp = requests.get("https://mg-api.37.com.cn/website/articlelist/51/46?webId=51&categoryId=46&pageSize=999").json()
     filename = re.search(r"point.*?版本.*?(?P<version>[\d\.]+).*?</div>",requests.get("https://a.9game.cn/dldlhsdj/").text,re.S).group("version")
     url = resp['data']['array'][0]['ext6']
-    download(url,filename,path)
     ninegame("dldlhsdj", filename)
+    download(url,filename,path)
     
 
 def main():
