@@ -17,17 +17,17 @@ def Multithreading(target,args=""):
 
 def main():
     tencent_games = [
-        # ["wangzhe/", "6648837"],
+        ["wangzhe/", "6648837"],
         ["hpjy/", "7701857"]
     ]
     if not os.path.exists("apks"):
         os.mkdir("apks")
     for i in tencent_games:
         peapods(i[0],i[1])
-    # dldl_37()
-    # ys()
-    # sgs_youka()
-    # sgz()
+    dldl_37()
+    ys()
+    sgs_youka()
+    sgz()
 
 if __name__ == "__main__":
     main()
