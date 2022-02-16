@@ -23,11 +23,19 @@ def main():
     if not os.path.exists("apks"):
         os.mkdir("apks")
     for i in tencent_games:
-        peapods(i[0],i[1])
-    dldl_37()
-    ys()
-    sgs_youka()
-    sgz()
+        name = "peapods('"+i[0]+"','"+i[1]+"')"
+        execute(name)
+    execute("dldl_37()")
+    execute("ys()")
+    execute("sgs_youka()")
+    execute("sgz()")
+
+def execute(name):
+    try:
+        exec(name)
+    except:
+        pass
+        
 
 if __name__ == "__main__":
     main()
